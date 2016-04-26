@@ -37,7 +37,7 @@ $ [sudo] npm install -g ldf-server
 
 ### Configure the data sources
 
-First, create a configuration file `config.json` similar to `config-example.json`,
+First, create a configuration file `config.json` similar to `config/config-example.json`,
 in which you detail your data sources.
 For example, this configuration uses an [HDT file](http://www.rdfhdt.org/)
 and a [SPARQL endpoint](http://www.w3.org/TR/sparql11-protocol/) as sources:
@@ -135,6 +135,22 @@ Change the value `3000` into the port on which your Linked Data Fragments server
 If you would like to proxy the data in a subfolder such as `http://example.org/my/data`,
 modify the `baseURL` in your `config.json` to `"http://example.org/my/data"`
 and change `location` from `/` to `/my/data` (excluding a trailing slash).
+
+### _(Optional)_ Running in a Docker container
+
+If you want to rapidly deploy the server as a microservice, you can build a [Docker](https://www.docker.com/) container as follows:
+
+```bash
+$ docker build -t ldf-server .
+```
+After that, you can run your newly created container:
+```bash
+$ docker run -p 3000:3000 -t -i --rm -v $(pwd)/config.json:/tmp/config.json ldf-server /tmp/config.json
+```
+
+### _(Optional)_ Host historical version of datasets
+
+You can [enable the Memento protocol](https://github.com/LinkedDataFragments/Server.js/wiki/Configuring-Memento) to offer different versions of an evolving dataset.
 
 ## License
 The Linked Data Fragments server is written by [Ruben Verborgh](http://ruben.verborgh.org/).
