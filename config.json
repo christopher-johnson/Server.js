@@ -4,21 +4,16 @@
   "datasources": {
     "wdqs-sparql": {
       "title": "Wikidata",
-      "type": "AltSparqlDatasource",
+      "type": "SparqlDatasource",
       "description": "Wikidata",
-      "settings": { "endpoint": "http://query.wikidata.org/sparql" }
-    },
-    "getty-sparql": {
-      "title": "Getty TGN",
-      "type": "AltSparqlDatasource",
-      "description": "Getty",
-      "settings": { "endpoint": "http://wdm-rdf.wmflabs.org/bigdata/namespace/tgn/sparql" }
+      "settings": { "endpoint": "http://wdm-rdf.wmflabs.org/sparql",  "defaultGraph": "http://wikidata.org",
+      "define": "DEFINE input:inference \"http://wdm-rdf.wmflabs.org/w3/rule_set/rdfs/trans\"\n"}
     },
     "dbpedia-sparql": {
       "title": "DBpedia 3.9 (Virtuoso)",
       "type": "SparqlDatasource",
       "description": "DBpedia 3.9 with a Virtuoso back-end",
-      "settings": { "endpoint": "http://dbpedia.restdesc.org/", "defaultGraph": "http://dbpedia.org" }
+      "settings": { "endpoint": "http://dbpedia.org/sparql", "defaultGraph": "http://dbpedia.org" }
     }
   },
 
